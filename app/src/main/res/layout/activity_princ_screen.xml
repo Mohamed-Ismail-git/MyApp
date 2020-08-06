@@ -7,7 +7,7 @@
     tools:context=".PrincScreen">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contextClickable="true"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.388" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/newsignal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Neveau Signal"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.388" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/Deconnexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 

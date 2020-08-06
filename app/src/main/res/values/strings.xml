@@ -2,4 +2,20 @@
     <string name="app_name">myLogin</string>
     <string name="Compte_user">Compte_user</string>
     <string name="modifies_info">MODIFIES INFO</string>
+    <string-array name="choice_items">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
+    </string-array>
+    <string-array name="choice_lieux">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
+    </string-array>
 </resources>

@@ -8,12 +8,23 @@ import android.view.View;
 import android.widget.Button;
 
 public class PrincScreen extends AppCompatActivity {
-    Button MyButton ;
+    Button Info,Deconnexion,NewSignal ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_princ_screen);
-        MyButton = findViewById(R.id.button3);
+        Info = findViewById(R.id.Info);
+        Deconnexion = findViewById(R.id.Deconnexion);
+        NewSignal = findViewById(R.id.newsignal);
+
+
+        NewSignal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PrincScreen.this ,SignalLayout.class));
+                finish();
+            }
+        });
     }
 
     public void Login(View v) {
@@ -25,4 +36,5 @@ public class PrincScreen extends AppCompatActivity {
         startActivity(new Intent(this, User_Account.class));
 
     }
+
 }
