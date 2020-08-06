@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">myLogin</string>
+    <string name="Compte_user">Compte_user</string>
+    <string name="modifies_info">MODIFIES INFO</string>
+</resources>
