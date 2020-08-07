@@ -4,13 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/background2"
+    android:backgroundTint="#03A9F4"
+    android:backgroundTintMode="add"
+    android:hapticFeedbackEnabled="false"
     tools:context=".SignalLayout">
 
     <TextView
         android:id="@+id/tvDisplayChoice"
         android:layout_width="147dp"
         android:layout_height="39dp"
-        android:text="selected item"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:text="Selected Cause"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.375"
@@ -19,8 +27,9 @@
 
     <Button
         android:id="@+id/btnSelectChoice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="91dp"
+        android:layout_height="45dp"
+        android:background="@mipmap/buttonimage"
         android:text="choix"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,4 +37,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
+
+    <TextView
+        android:id="@+id/Nature"
+        android:layout_width="147dp"
+        android:layout_height="39dp"
+        android:background="#FFFFFF"
+        android:backgroundTintMode="src_in"
+        android:gravity="center"
+        android:hapticFeedbackEnabled="false"
+        android:text="Selected Nature"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.375" />
+
+    <Button
+        android:id="@+id/NatureButton"
+        android:layout_width="91dp"
+        android:layout_height="45dp"
+        android:background="@mipmap/buttonimage"
+        android:text="choix"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38"
+        tools:ignore="DuplicateIds" />
 </androidx.constraintlayout.widget.ConstraintLayout>
