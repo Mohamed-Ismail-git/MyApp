@@ -3,7 +3,9 @@ package dz.ochefaouiismail.mylogin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -61,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegisterUser();
+                Register();
 
-                startActivity(new Intent(MainActivity.this,PrincScreen.class));
-                finish();
+              //  startActivity(new Intent(MainActivity.this,PrincScreen.class));
+               // finish();
 
             }
         });
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     jsonObject = new JSONObject(response);
                     Toast.makeText(getApplicationContext(),jsonObject.getString("success"),Toast.LENGTH_LONG).show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -104,6 +107,90 @@ public class MainActivity extends AppCompatActivity {
                 Map<String,String> params =new HashMap<>();
                 params.put("email", Email);
                 params.put("password", Password);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+
+
+    }
+    private void Register(){
+        final String Email = email.getText().toString();
+        final String Password = password.getText().toString().trim();
+        progressDialog.setMessage("registering User...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progressDialog.dismiss();
+               // Toast.makeText(getApplicationContext(),"login ",Toast.LENGTH_LONG).show();
+                JSONObject jsonObject,USER;
+
+                try {
+                    jsonObject = new JSONObject(response);
+                    if(jsonObject.getBoolean("success")) {
+                    SharedPreferences user = getApplicationContext().getSharedPreferences("user", getApplicationContext().MODE_PRIVATE);
+                    SharedPreferences.Editor edit= user.edit();
+                    edit.apply();
+                    Toast.makeText(getApplicationContext(),"login succes",Toast.LENGTH_LONG).show();
+                         startActivity(new Intent(MainActivity.this,PrincScreen.class));
+                         finish();
+
+                    }else if(!(jsonObject.getBoolean("success"))){
+                        Toast.makeText(getApplicationContext(),"login not succes",Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //   if(jsonObject.getBoolean("success")) {
+                     // USER = jsonObject.getJSONObject("user");
+                   // Toast.makeText(getApplicationContext(), "login Success"+jsonObject.getString("success") , Toast.LENGTH_LONG).show();
+
+                     // SharedPreferences user = getApplicationContext().getSharedPreferences("user", getApplicationContext().MODE_PRIVATE);
+                      //SharedPreferences.Editor edit= user.edit();
+                      //edit.putString("token",jsonObject.getString("token"));
+                     // edit.putString("name",USER.getString("name"));
+                   //   edit.putString("role",USER.getString("role"));
+                    //  edit.putString("telephone",USER.getString("telephone"));
+                     // edit.putString("sexe",USER.getString("sexe"));
+                      //edit.putString("email",USER.getString("email"));
+                      //edit.putString("password",USER.getString("password"));
+                       //edit.apply();
+                       //Toast.makeText(getApplicationContext(),"login succes",Toast.LENGTH_LONG).show();
+
+
+                //  }
+
+
+
+
+            }
+
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.hide();
+
+               Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(),"login not succes",Toast.LENGTH_LONG).show();
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params =new HashMap<>();
+                params.put("name",Password );
+                params.put("email", Email);
+                params.put("password", Password);
+               params.put("role", "teacher");
+                params.put("telephone", Email);
+               params.put("sexe", "male");
                 return params;
             }
         };
