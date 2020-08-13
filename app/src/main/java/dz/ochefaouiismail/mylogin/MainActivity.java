@@ -3,11 +3,9 @@ package dz.ochefaouiismail.mylogin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -40,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //variable
-        email=findViewById(R.id.ETEmail);
-        password=findViewById(R.id.ETPassword);
+        email=findViewById(R.id.ETtelephone);
+        password=findViewById(R.id.ETRole);
         progressDialog = new ProgressDialog(this);
         //init textviews
         init();
@@ -63,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Register();
+                //Register();
 
-              //  startActivity(new Intent(MainActivity.this,PrincScreen.class));
-               // finish();
+               startActivity(new Intent(MainActivity.this,PrincScreen.class));
+                finish();
 
             }
         });

@@ -11,8 +11,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="350dp"
-        android:layout_height="434dp"
+        android:layout_width="334dp"
+        android:layout_height="488dp"
         android:layout_marginTop="30dp"
         android:layout_weight="1"
         android:background="@mipmap/signup"
@@ -21,73 +21,94 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.288">
 
 
         <EditText
-            android:id="@+id/ETFirstName"
+            android:id="@+id/ETName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#6696FF"
+            android:layout_marginBottom="-10dp"
 
-            android:hint="First Name"
+            android:backgroundTint="#6696FF"
+            android:hint="@string/Name"
             android:textSize="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/ETLastName"
+            app:layout_constraintBottom_toTopOf="@+id/ETtelephone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.845" />
-
-        <EditText
-            android:id="@+id/ETLastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:backgroundTint="#6696FF"
-            android:hint="Last Name"
-            android:textSize="15dp"
-
-            app:layout_constraintBottom_toTopOf="@+id/ETEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintVertical_bias="0.591" />
 
         <EditText
             android:id="@+id/ETEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="8dp"
+
             android:backgroundTint="#6696FF"
-            android:hint="Email"
+            android:hint="@string/Email"
             android:textSize="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/ETPassword"
+            app:layout_constraintBottom_toTopOf="@+id/ETtelephone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ETName"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/ETtelephone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#6696FF"
+            android:hint="@string/telephone"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/ETRole"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/ETPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:backgroundTint="#6696FF"
-            android:hint="Password"
-            android:textSize="15dp"
 
-            app:layout_constraintBottom_toTopOf="@+id/ETRePassword"
+        <TextView
+            android:id="@+id/ETRole"
+            android:layout_width="239dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#6696FF"
+            android:gravity="center"
+
+            android:hint="@string/Role"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/ETSexe"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/ETRePassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+        <Button
+            android:id="@+id/role"
+            android:layout_width="64dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/buttonimage"
+            android:clickable="true"
+            android:text="choix"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.938"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.548" />
+
+        <TextView
+            android:id="@+id/ETSexe"
+            android:layout_width="97dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="152dp"
             android:backgroundTint="#6696FF"
-            android:hint="Retape Password"
+            android:gravity="center"
+            android:hint="@string/sexe"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +125,7 @@
             android:textColor="#6696ff"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/ETFirstName"
+            app:layout_constraintBottom_toBottomOf="@id/ETName"
             app:layout_constraintEnd_toStartOf="@+id/TVSignup"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -128,6 +149,75 @@
             app:layout_constraintVertical_bias="0.004" />
 
 
+        <RadioGroup
+            android:id="@+id/Radio"
+            android:layout_width="173dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="56dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.807"
+            app:layout_constraintStart_toStartOf="@+id/ETSexe"
+            app:layout_constraintTop_toBottomOf="@+id/ETtelephone"
+            app:layout_constraintVertical_bias="0.061">
+
+            <RadioButton
+                android:id="@+id/male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contextClickable="true"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Female" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textInputLayout4"
+            app:layout_constraintVertical_bias="0.01999998"
+            app:passwordToggleEnabled="true">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <EditText
+            android:id="@+id/ETCpasword"
+            android:layout_width="331dp"
+            android:layout_height="53dp"
+            android:ems="10"
+            android:hint="Confirme Password"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.86"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ETRole"
+            app:layout_constraintVertical_bias="0.806" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -142,9 +232,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintVertical_bias="0.543" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

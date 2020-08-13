@@ -2,6 +2,13 @@
     <string name="app_name">myLogin</string>
     <string name="Compte_user">Compte_user</string>
     <string name="modifies_info">MODIFIES INFO</string>
+    <string name="Name">Name</string>
+    <string name="Email">Email</string>
+    <string name="Role">Role</string>
+    <string name="telephone">Telephone</string>
+    <string name="sexe">choice Sexe</string>
+    <string name="Password">Password</string>
+    <string name="confirme">Confirmer Password</string>
     <string-array name="choice_items">
         <item>One</item>
         <item>Two</item>
@@ -17,5 +24,10 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
+    </string-array>
+    <string-array name="role_item">
+        <item>teacher</item>
+        <item>etudiant</item>
+        <item>ATS</item>
     </string-array>
 </resources>
