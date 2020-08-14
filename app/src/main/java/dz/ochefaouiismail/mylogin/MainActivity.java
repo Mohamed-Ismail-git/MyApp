@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,6 +19,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,8 +33,10 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     TextView Signup;
     TextView LoginBtn;
-    EditText email,password;
+    EditText email;
+    TextInputEditText password;
     private ProgressDialog progressDialog;
+    AwesomeValidation awesomeValidation;
 
 
     @Override
@@ -38,9 +45,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //variable
-        email=findViewById(R.id.ETtelephone);
-        password=findViewById(R.id.ETRole);
+        email=findViewById(R.id.ETEMail);
+        password=findViewById(R.id.ETPAssword);
         progressDialog = new ProgressDialog(this);
+        //initilize validation style
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         //init textviews
         init();
     }
@@ -61,13 +70,20 @@ public class MainActivity extends AppCompatActivity {
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Register();
+               if(Valide()){
+                   Toast.makeText(getApplicationContext(),"wait....",Toast.LENGTH_LONG).show();
+               }
 
-               startActivity(new Intent(MainActivity.this,PrincScreen.class));
-                finish();
 
             }
         });
+
+
+    }
+    private void RegisterUsr(){
+        Toast.makeText(getApplicationContext(),"secess",Toast.LENGTH_LONG).show();
+        progressDialog.setMessage("registering User...");
+        progressDialog.show();
 
 
     }
@@ -116,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void Register(){
-        final String Email = email.getText().toString();
+        final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
         progressDialog.setMessage("registering User...");
         progressDialog.show();
@@ -130,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     jsonObject = new JSONObject(response);
+                    USER = jsonObject.getJSONObject("message");
                     if(jsonObject.getBoolean("success")) {
                     SharedPreferences user = getApplicationContext().getSharedPreferences("user", getApplicationContext().MODE_PRIVATE);
                     SharedPreferences.Editor edit= user.edit();
@@ -139,31 +156,13 @@ public class MainActivity extends AppCompatActivity {
                          finish();
 
                     }else if(!(jsonObject.getBoolean("success"))){
-                        Toast.makeText(getApplicationContext(),"login not succes",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"login not succes",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),USER.getString("email"),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),USER.getString("telephone"),Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                //   if(jsonObject.getBoolean("success")) {
-                     // USER = jsonObject.getJSONObject("user");
-                   // Toast.makeText(getApplicationContext(), "login Success"+jsonObject.getString("success") , Toast.LENGTH_LONG).show();
-
-                     // SharedPreferences user = getApplicationContext().getSharedPreferences("user", getApplicationContext().MODE_PRIVATE);
-                      //SharedPreferences.Editor edit= user.edit();
-                      //edit.putString("token",jsonObject.getString("token"));
-                     // edit.putString("name",USER.getString("name"));
-                   //   edit.putString("role",USER.getString("role"));
-                    //  edit.putString("telephone",USER.getString("telephone"));
-                     // edit.putString("sexe",USER.getString("sexe"));
-                      //edit.putString("email",USER.getString("email"));
-                      //edit.putString("password",USER.getString("password"));
-                       //edit.apply();
-                       //Toast.makeText(getApplicationContext(),"login succes",Toast.LENGTH_LONG).show();
-
-
-                //  }
-
-
 
 
             }
@@ -198,6 +197,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+    private boolean Valide(){
+
+
+        //Validtion formule
+
+        awesomeValidation.addValidation(this,R.id.ETEMail,
+                Patterns.EMAIL_ADDRESS,R.string.invalid_email);
+
+        awesomeValidation.addValidation(this,R.id.ETPAssword,
+                ".{5,}",R.string.invalid_Password);
+
+
+
+
+        return awesomeValidation.validate();
     }
 
 }

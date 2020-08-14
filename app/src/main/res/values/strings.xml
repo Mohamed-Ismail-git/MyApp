@@ -9,6 +9,13 @@
     <string name="sexe">choice Sexe</string>
     <string name="Password">Password</string>
     <string name="confirme">Confirmer Password</string>
+    <string name="invalid_name">Please Entrer Valid Name</string>
+    <string name="invalid_phoneN">Please Entrer Valid Number</string>
+    <string name="invalid_email">"Please Entrer Valid Email "</string>
+    <string name="invalid_role">Please choise role</string>
+    <string name="invalid_sexe">Please choice sexe</string>
+    <string name="invalid_Password">" Pleas Entrer 5 Digit Or More "</string>
+    <string name="invalid_CPassword">Passsword Does Not Math</string>
     <string-array name="choice_items">
         <item>One</item>
         <item>Two</item>
@@ -27,7 +34,7 @@
     </string-array>
     <string-array name="role_item">
         <item>teacher</item>
-        <item>etudiant</item>
+        <item>student</item>
         <item>ATS</item>
     </string-array>
 </resources>
