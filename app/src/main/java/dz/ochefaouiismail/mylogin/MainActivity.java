@@ -71,7 +71,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                if(Valide()){
-                   Toast.makeText(getApplicationContext(),"wait....",Toast.LENGTH_LONG).show();
+                   Toast.makeText(getApplicationContext(),"the requet for login not enable now just valid Enter now...",Toast.LENGTH_LONG).show();
+                   Intent intent = new Intent (MainActivity.this, PrincScreen.class );
+                   startActivity(intent);
+                   finish();
                }
 
 
