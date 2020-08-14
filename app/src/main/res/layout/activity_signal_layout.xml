@@ -10,63 +10,194 @@
     android:hapticFeedbackEnabled="false"
     tools:context=".SignalLayout">
 
-    <TextView
-        android:id="@+id/tvDisplayChoice"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:background="#FFFFFF"
-        android:gravity="center"
-        android:text="Selected Cause"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.375"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnSelectChoice"
-        android:layout_width="91dp"
-        android:layout_height="45dp"
-        android:background="@mipmap/buttonimage"
-        android:text="choix"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        <TextView
+            android:id="@+id/lien"
+            android:layout_width="170dp"
+            android:layout_height="45dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="Selected Cause"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.232"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.147"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/Nature"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:background="#FFFFFF"
-        android:backgroundTintMode="src_in"
-        android:gravity="center"
-        android:hapticFeedbackEnabled="false"
-        android:text="Selected Nature"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.375"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.375" />
 
-    <Button
-        android:id="@+id/NatureButton"
-        android:layout_width="91dp"
-        android:layout_height="45dp"
-        android:background="@mipmap/buttonimage"
-        android:text="choix"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38"
-        tools:ignore="DuplicateIds" />
+        <Button
+            android:id="@+id/natureButtonw"
+            android:layout_width="91dp"
+            android:layout_height="45dp"
+            android:background="@mipmap/buttonimage"
+            android:text="choix"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.846"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.147" />
+
+        <TextView
+            android:id="@+id/cause"
+            android:layout_width="170dp"
+            android:layout_height="45dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="Selected localisation"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.232"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.252" />
+
+        <Button
+            android:id="@+id/natureButtons"
+            android:layout_width="91dp"
+            android:layout_height="45dp"
+            android:background="@mipmap/buttonimage"
+            android:text="choix"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.846"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.252" />
+
+        <TextView
+            android:id="@+id/tvDisplayChoice"
+            android:layout_width="170dp"
+            android:layout_height="45dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="Selected Cause"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.232"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.358" />
+
+        <Button
+            android:id="@+id/btnSelectChoice"
+            android:layout_width="91dp"
+            android:layout_height="45dp"
+            android:background="@mipmap/buttonimage"
+            android:text="choix"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.846"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.358" />
+
+        <TextView
+            android:id="@+id/Nature"
+            android:layout_width="170dp"
+            android:layout_height="45dp"
+            android:background="#FFFFFF"
+            android:backgroundTintMode="src_in"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
+            android:text="Selected Nature"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.232"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.467" />
+
+
+        <Button
+            android:id="@+id/NatureButton"
+            android:layout_width="91dp"
+            android:layout_height="45dp"
+            android:background="@mipmap/buttonimage"
+            android:text="choix"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.846"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.467" />
+
+        <Button
+            android:id="@+id/reteur3"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:background="@mipmap/buttonimage"
+            android:text="Camera"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.174"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.581"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/reteur2"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:background="@mipmap/buttonimage"
+            android:text="Galerie"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.847"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.581"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/reteur"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:background="@mipmap/buttonimage"
+            android:text="Reteur"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/envoyer"
+            app:layout_constraintHorizontal_bias="0.212"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.918"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/envoyer"
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:background="@mipmap/buttonimage"
+            android:text="Envoyer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.847"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.918"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="186dp"
+            android:layout_height="120dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.788"
+            app:srcCompat="@drawable/camera_logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
