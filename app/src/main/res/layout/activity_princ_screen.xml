@@ -4,42 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4CAF50"
-    android:backgroundTint="#00BCD4"
+    android:background="@mipmap/backgroundimage"
+    android:backgroundTint="#673AB7"
     android:backgroundTintMode="add"
     tools:context=".PrincScreen">
 
     <Button
         android:id="@+id/Info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@mipmap/buttonimage"
         android:contextClickable="true"
         android:onClick="INFO"
         android:text="Info Compte"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.388" />
+        app:layout_constraintVertical_bias="0.393" />
 
     <Button
         android:id="@+id/newsignal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@mipmap/buttonimage"
         android:text="Neveau Signal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.388" />
+        app:layout_constraintVertical_bias="0.393" />
 
     <Button
         android:id="@+id/Deconnexion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@mipmap/buttonimage"
         android:clickable="true"
         android:contextClickable="true"
         android:onClick="Login"

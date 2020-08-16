@@ -25,11 +25,11 @@
 
 
         <EditText
-            android:id="@+id/ETtelephone"
+            android:id="@+id/ETEMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="124dp"
 
+            android:layout_marginTop="124dp"
             android:backgroundTint="#6696FF"
             android:hint=" Email"
             android:textSize="15dp"
@@ -55,7 +55,7 @@
 
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ETCPassword"
+                android:id="@+id/ETPAssword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
