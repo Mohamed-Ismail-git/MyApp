@@ -230,11 +230,12 @@ public class signup extends AppCompatActivity {
                         if(!USER.getString("email").equals("")){
                             Toast.makeText(getApplicationContext(),USER.getString("email"),Toast.LENGTH_LONG).show();
                         }
+                        if(!USER.getString("telephone").equals("")){
+                            Toast.makeText(getApplicationContext(),USER.getString("telephone"),Toast.LENGTH_LONG).show();
+                        }
 
                     }
-                    if(!USER.getString("telephone").equals("")){
-                        Toast.makeText(getApplicationContext(),USER.getString("telephone"),Toast.LENGTH_LONG).show();
-                    }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();

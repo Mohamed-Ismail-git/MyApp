@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                if(Valide()){
-                   Toast.makeText(getApplicationContext(),"the requet for login not enable now just valid Enter now...",Toast.LENGTH_LONG).show();
+                   LoginUser();
                    Intent intent = new Intent (MainActivity.this, PrincScreen.class );
                    startActivity(intent);
                    finish();
@@ -83,27 +83,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    private void RegisterUsr(){
-        Toast.makeText(getApplicationContext(),"secess",Toast.LENGTH_LONG).show();
-        progressDialog.setMessage("registering User...");
-        progressDialog.show();
 
 
-    }
-    private void RegisterUser(){
+    private void LoginUser(){
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
-        progressDialog.setMessage("registering User...");
+        progressDialog.setMessage("login User...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_Register, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_Login, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
-                JSONObject jsonObject;
+                JSONObject jsonObject,user;
                 try {
                     jsonObject = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),jsonObject.getString("success"),Toast.LENGTH_LONG).show();
+                   user=jsonObject.getJSONObject("user");
+                   Toast.makeText(getApplicationContext(), "Welcome"+"   "+user.getString("name"),Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent (MainActivity.this, PrincScreen.class );
+                     startActivity(intent);
+                    finish();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -114,7 +113,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.hide();
-                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+             //   if(!error.getMessage().equals(""))
+              //  Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+               // else
+                Toast.makeText(getApplicationContext(),"Failed Login \nEmail or Password false !",Toast.LENGTH_LONG).show();
+
 
             }
         }){
