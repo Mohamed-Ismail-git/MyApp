@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                if(Valide()){
-                   LoginUser();
+                  // LoginUser();
                   // Toast.makeText(getApplicationContext(), USER.getString("email","empty"),Toast.LENGTH_LONG).show();
 
                    //  Intent intent = new Intent (MainActivity.this, PrincScreen.class );
