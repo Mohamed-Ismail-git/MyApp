@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#100D0D"
+    android:clickable="true"
     tools:context=".User_Account">
 
 
@@ -15,16 +17,17 @@
         android:foregroundGravity="center_horizontal"
         android:onClick="Click"
         android:src="@drawable/ic_action_photo"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintBottom_toBottomOf="@+id/modifier_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/UserInfo"
         app:layout_constraintVertical_bias="0.129" />
 
+
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="219dp"
-        android:layout_height="56dp"
+        android:id="@+id/modifier_info"
+        android:layout_width="189dp"
+        android:layout_height="50dp"
         android:background="@mipmap/buttonimage"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="@string/modifies_info"
@@ -35,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintVertical_bias="0.891" />
 
     <TextView
         android:id="@+id/UserInfo"
@@ -101,13 +104,14 @@
         android:id="@+id/textView7"
         android:layout_width="105dp"
         android:layout_height="32dp"
-        android:layout_marginBottom="216dp"
         android:gravity="center"
         android:text="Email :"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.689" />
 
     <TextView
         android:id="@+id/TVName"
@@ -138,6 +142,24 @@
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/TVName"
         app:layout_constraintVertical_bias="0.248" />
+
+    <TextView
+        android:id="@+id/retour"
+        android:layout_width="189dp"
+        android:layout_height="50dp"
+        android:background="@mipmap/buttonimage"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="Princscreen"
+        android:text="RETOUR"
+        android:textColor="#DFDFE1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/modifier_info"
+        app:layout_constraintVertical_bias="0.783" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

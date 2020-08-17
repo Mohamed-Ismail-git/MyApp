@@ -23,6 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class User_Account extends AppCompatActivity {
     CircleImageView IV;
     TextView gallery,camera,name,email;
+    String nameU,emailU,idU;
     Uri image_uri;
     int i;
     private static final int I_P_C=1000;
@@ -43,6 +44,22 @@ public class User_Account extends AppCompatActivity {
         IV=findViewById(R.id.UserImage);
 
         //hundle boutton click
+        //get data for user
+        Intent intent = getIntent();
+        nameU=intent.getStringExtra("name");
+        emailU=intent.getStringExtra("email");
+        idU=intent.getStringExtra("id");
+        //write data
+        name.setText(nameU);
+        email.setText(emailU);
+
+    }
+    public void Princscreen(View v) {
+        Intent intent =new Intent(this, PrincScreen.class);
+        intent.putExtra("name",nameU);
+        intent.putExtra("email",emailU);
+        intent.putExtra("id",idU);
+        startActivity(intent);
 
     }
 

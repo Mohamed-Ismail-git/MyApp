@@ -31,8 +31,8 @@
 
             android:layout_marginTop="124dp"
             android:backgroundTint="#6696FF"
-            android:hint=" Email"
-            android:textSize="15dp"
+            android:hint="Email"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/ETRole"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

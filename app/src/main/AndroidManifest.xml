@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SignalLayout"></activity>
         <activity android:name=".User_Account" />
-        <activity android:name=".PrincScreen" />
+        <activity android:name=".PrincScreen" android:parentActivityName=".MainActivity"/>
         <activity android:name=".signup" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Zsplashscreen">

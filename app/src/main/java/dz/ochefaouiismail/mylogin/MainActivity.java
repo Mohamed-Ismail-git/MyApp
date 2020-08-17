@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     TextView Signup;
     TextView LoginBtn;
     EditText email;
+    Intent intent;
+    public SharedPreferences USER ;
+    public SharedPreferences.Editor edit;
     TextInputEditText password;
     private ProgressDialog progressDialog;
     AwesomeValidation awesomeValidation;
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         //initilize validation style
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        intent = new Intent (MainActivity.this, PrincScreen.class );
         //init textviews
         init();
     }
@@ -64,17 +68,21 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent (MainActivity.this, signup.class );
                 startActivity(intent);
                 finish();
+
             }
         }
         );
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                if(Valide()){
                    LoginUser();
-                   Intent intent = new Intent (MainActivity.this, PrincScreen.class );
-                   startActivity(intent);
-                   finish();
+                  // Toast.makeText(getApplicationContext(), USER.getString("email","empty"),Toast.LENGTH_LONG).show();
+
+                   //  Intent intent = new Intent (MainActivity.this, PrincScreen.class );
+                   //startActivity(intent);
+                   //finish();
                }
 
 
@@ -99,14 +107,23 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     jsonObject = new JSONObject(response);
                    user=jsonObject.getJSONObject("user");
-                   Toast.makeText(getApplicationContext(), "Welcome"+"   "+user.getString("name"),Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent (MainActivity.this, PrincScreen.class );
-                     startActivity(intent);
-                    finish();
+                     USER = getApplicationContext().getSharedPreferences("user", getApplicationContext().MODE_PRIVATE);
+                     edit= USER.edit();
+                   // edit.putString("token",jsonObject.getString("token"));
+                    edit.putString("name",user.getString("name"));
+                    edit.putString("email",user.getString("email"));
+                    edit.putString("id",user.getString("id"));
+                    edit.commit();
+                    edit.apply();
+                    Toast.makeText(getApplicationContext(), "Welcome"+"   "+USER.getString("name","empty"),Toast.LENGTH_LONG).show();
+                    callintent();
+                    //startActivity(intent);
+                   // finish();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
 
             }
         }, new Response.ErrorListener() {
@@ -137,6 +154,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private void callintent() {
+        intent.putExtra("name",USER.getString("name",""));
+        intent.putExtra("email",USER.getString("email",""));
+        intent.putExtra("id",USER.getString("id",""));
+        startActivity(intent);
+    }
+
     private void Register(){
         final String Email = email.getText().toString().trim();
         final String Password = password.getText().toString().trim();
