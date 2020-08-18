@@ -16,6 +16,7 @@
     <string name="invalid_sexe">Please choice sexe</string>
     <string name="invalid_Password">" Pleas Entrer 5 Digit Or More "</string>
     <string name="invalid_CPassword">Passsword Does Not Math</string>
+    <string name="google_maps_key">AIzaSyDPfQBUdw6s5NYVm6CdCRrrbxeVnf56cjQ</string>
     <string-array name="choice_items">
         <item>One</item>
         <item>Two</item>
@@ -37,4 +38,5 @@
         <item>student</item>
         <item>ATS</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>

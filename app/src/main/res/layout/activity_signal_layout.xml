@@ -12,12 +12,12 @@
 
 
         <TextView
-            android:id="@+id/lien"
+            android:id="@+id/tvDisplayLieu"
             android:layout_width="170dp"
             android:layout_height="45dp"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:text="Selected Cause"
+            android:text="Selected Lieu"
             android:textSize="18sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
 
 
         <Button
-            android:id="@+id/natureButtonw"
+            android:id="@+id/btnSelectLieu"
             android:layout_width="91dp"
             android:layout_height="45dp"
             android:background="@mipmap/buttonimage"
@@ -59,7 +59,7 @@
             app:layout_constraintVertical_bias="0.252" />
 
         <Button
-            android:id="@+id/natureButtons"
+            android:id="@+id/btnSelectLocation"
             android:layout_width="91dp"
             android:layout_height="45dp"
             android:background="@mipmap/buttonimage"
