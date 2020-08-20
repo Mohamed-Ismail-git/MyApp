@@ -11,13 +11,13 @@
     tools:context=".SignalLayout">
 
 
-        <TextView
-            android:id="@+id/tvDisplayLieu"
+        <EditText
+            android:id="@+id/teDisplayLieu"
             android:layout_width="170dp"
             android:layout_height="45dp"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:text="Selected Lieu"
+            android:hint="Selected Lieu"
             android:textSize="18sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -42,13 +42,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.147" />
 
-        <TextView
-            android:id="@+id/cause"
+        <EditText
+            android:id="@+id/TELoc"
             android:layout_width="170dp"
             android:layout_height="45dp"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:text="Selected localisation"
+            android:hint="Selected localisation"
             android:textSize="18sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -71,13 +71,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.252" />
 
-        <TextView
-            android:id="@+id/tvDisplayChoice"
+        <EditText
+            android:id="@+id/teDisplayCause"
             android:layout_width="170dp"
             android:layout_height="45dp"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:text="Selected Cause"
+            android:hint="Selected Cause"
             android:textSize="18sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -88,7 +88,7 @@
             app:layout_constraintVertical_bias="0.358" />
 
         <Button
-            android:id="@+id/btnSelectChoice"
+            android:id="@+id/btnSelectCause"
             android:layout_width="91dp"
             android:layout_height="45dp"
             android:background="@mipmap/buttonimage"
@@ -100,15 +100,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.358" />
 
-        <TextView
-            android:id="@+id/Nature"
+        <EditText
+            android:id="@+id/teNature"
             android:layout_width="170dp"
             android:layout_height="45dp"
             android:background="#FFFFFF"
             android:backgroundTintMode="src_in"
             android:gravity="center"
             android:hapticFeedbackEnabled="false"
-            android:text="Selected Nature"
+            android:hint="Selected Nature"
             android:textSize="18sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -133,10 +133,11 @@
             app:layout_constraintVertical_bias="0.467" />
 
         <Button
-            android:id="@+id/reteur3"
+            android:id="@+id/camera"
             android:layout_width="90dp"
             android:layout_height="45dp"
             android:background="@mipmap/buttonimage"
+            android:onClick="Camera"
             android:text="Camera"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -147,10 +148,11 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/reteur2"
+            android:id="@+id/gallery"
             android:layout_width="90dp"
             android:layout_height="45dp"
             android:background="@mipmap/buttonimage"
+            android:onClick="Gallery"
             android:text="Galerie"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -165,6 +167,7 @@
             android:layout_width="90dp"
             android:layout_height="45dp"
             android:background="@mipmap/buttonimage"
+            android:onClick="retour"
             android:text="Reteur"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/envoyer"
@@ -189,15 +192,16 @@
             tools:ignore="MissingConstraints" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="186dp"
-            android:layout_height="120dp"
+            android:id="@+id/IView"
+            android:layout_width="300dp"
+            android:layout_height="160dp"
+            android:scrollbarSize="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.788"
+            app:layout_constraintVertical_bias="0.8"
             app:srcCompat="@drawable/camera_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

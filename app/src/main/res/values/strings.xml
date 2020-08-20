@@ -39,4 +39,7 @@
         <item>ATS</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="invalid_lieu">lieu is empty</string>
+    <string name="invalid_nature">nature is empty !!</string>
+    <string name="invalid_cause">cause is empty !!</string>
 </resources>
