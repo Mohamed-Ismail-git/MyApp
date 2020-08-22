@@ -1,32 +1,39 @@
 package dz.ochefaouiismail.mylogin;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 
 public class MapsActivity extends AppCompatActivity
-        implements OnMapReadyCallback {
+      {
 
-    private GoogleMap mMap;
+   // private GoogleMap mMap;
+    int PLCE_PICKER_REQUEST=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+      maps();
     }
-
+          public void maps(){
+              PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+              try {
+                  startActivityForResult(builder.build(MapsActivity.this)
+                          ,PLCE_PICKER_REQUEST);
+              } catch (GooglePlayServicesRepairableException e) {
+                  e.printStackTrace();
+              } catch (GooglePlayServicesNotAvailableException e) {
+                  e.printStackTrace();
+              }
+          }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -37,11 +44,21 @@ public class MapsActivity extends AppCompatActivity
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-33.852, 151.211);
-        // Add a marker in Sydney and move the camera
-        googleMap.addMarker(new MarkerOptions()
-                .position(sydney)
-                .title("Marker in Sydney"));
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PLCE_PICKER_REQUEST){
+            if (resultCode == RESULT_OK){
+                Place place = PlacePicker.getPlace(data,this);
+                StringBuilder stringBuilder =new StringBuilder();
+                String latitude = String.valueOf(place.getLatLng().latitude);
+                String longitude = String.valueOf(place.getLatLng().longitude);
+                stringBuilder.append("Latitude");
+                stringBuilder.append(latitude);
+                stringBuilder.append("\n");
+                stringBuilder.append("longitude");
+                stringBuilder.append(longitude);
+
+            }
+        }
     }
 }

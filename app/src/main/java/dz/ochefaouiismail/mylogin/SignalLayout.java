@@ -2,6 +2,7 @@ package dz.ochefaouiismail.mylogin;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,21 +23,38 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.GeofencingClient;
-import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignalLayout extends AppCompatActivity  {
     int which = 0;
-    private TextView tvDisplayChoice, tvDisplayLieu, NatureText;
-    private FusedLocationProviderClient fusedLocationClient;
-    private GeofencingClient geofencingClient;
+    private EditText EtDisplayCause, EtDisplayLieu, EtNature ,EtLocation;
+   // private FusedLocationProviderClient fusedLocationClient;
+   // private GeofencingClient geofencingClient;
+    private ProgressDialog progressDialoge;
     Button Nature;
     Uri image_uri;
     int i;
+    int j =0;
+    int PLCE_PICKER_REQUEST=1;
     private static final int I_P_C=1000;
     private static final int P_C=1001;
     ImageView IV;
@@ -43,11 +62,14 @@ public class SignalLayout extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        awesomeValidation1 = new AwesomeValidation(ValidationStyle.BASIC);
         setContentView(R.layout.activity_signal_layout);
-        tvDisplayChoice = findViewById(R.id.teDisplayCause);
-        tvDisplayLieu = findViewById(R.id.teDisplayLieu);
-        NatureText = findViewById(R.id.teNature);
+        awesomeValidation1 = new AwesomeValidation(ValidationStyle.BASIC);
+        progressDialoge = new ProgressDialog(this);
+        setContentView(R.layout.activity_signal_layout);
+        EtDisplayCause = findViewById(R.id.teDisplayCause);
+        EtDisplayLieu = findViewById(R.id.teDisplayLieu);
+        EtNature = findViewById(R.id.teNature);
+        EtLocation = findViewById(R.id.TELoc);
         Nature = findViewById(R.id.NatureButton);
         Button btnSelectChoice = findViewById(R.id.btnSelectCause);
         Button btnSelectLieu = findViewById(R.id.btnSelectLieu);
@@ -57,8 +79,8 @@ public class SignalLayout extends AppCompatActivity  {
         Button btngallery= findViewById(R.id.gallery);
         IV= findViewById(R.id.IView);
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        geofencingClient = LocationServices.getGeofencingClient(this);
+       // fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+       // geofencingClient = LocationServices.getGeofencingClient(this);
 
 
         btnSelectChoice.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +88,7 @@ public class SignalLayout extends AppCompatActivity  {
             public void onClick(View view) {
                 which = 0;
                 String[] lis = getResources().getStringArray(R.array.choice_items);
-                dialog(lis, tvDisplayChoice);
+                dialog(lis, EtDisplayCause);
             }
         });
 
@@ -75,17 +97,21 @@ public class SignalLayout extends AppCompatActivity  {
             public void onClick(View view) {
                 which = 0;
                 String[] lis = getResources().getStringArray(R.array.choice_lieux);
-                dialog(lis, tvDisplayLieu);
+                dialog(lis, EtDisplayLieu);
             }
         });
 
         btnSelectLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignalLayout.this,MapsActivity.class);
-                startActivity(intent);
+              //  Intent intent = new Intent (SignalLayout.this, MapsActivity.class );
+               // startActivity(intent);
+                //finish();
+mapLocation();
+
             }
         });
+
 
 
         Nature.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +119,7 @@ public class SignalLayout extends AppCompatActivity  {
             public void onClick(View v) {
                 which = 0;
                 String[] liste = getResources().getStringArray(R.array.choice_lieux);
-                dialog(liste,NatureText);
+                dialog(liste,EtNature);
             }
         });
 
@@ -101,9 +127,9 @@ public class SignalLayout extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 if(Validate())
-                    Toast.makeText(getApplicationContext(),"welcome ",Toast.LENGTH_LONG).show();
+                    EnvoyerSignal();
                 else
-                Toast.makeText(getApplicationContext(),"can not use empty item ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"can not use empty item ",Toast.LENGTH_LONG).show();
             }
         });
 
@@ -111,8 +137,24 @@ public class SignalLayout extends AppCompatActivity  {
 
     }
 
+    private void mapLocation() {
+        j=3;
+        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+        try {
+            startActivityForResult(builder.build(SignalLayout.this)
+                    ,PLCE_PICKER_REQUEST);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
 
-private void dialog(final String[] list, final TextView text){
+    }
+
+
+
+
+    private void dialog(final String[] list, final TextView text){
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle("Choose any item");
 
@@ -268,7 +310,23 @@ private void dialogMap(int id){
             IV.setImageURI(image_uri);
 
         }
-    }
+        if(j==3){
+        if(requestCode == PLCE_PICKER_REQUEST){
+            if (resultCode == RESULT_OK){
+                Place place = PlacePicker.getPlace(data,this);
+                StringBuilder stringBuilder =new StringBuilder();
+                String latitude = String.valueOf(place.getLatLng().latitude);
+                String longitude = String.valueOf(place.getLatLng().longitude);
+               // stringBuilder.append("Latitude");
+                stringBuilder.append(latitude);
+                stringBuilder.append("\t");
+               // stringBuilder.append("longitude");
+                stringBuilder.append(longitude);
+                EtLocation.setText(stringBuilder.toString());
+                j=0;
+            }
+        }
+    }}
     public void retour(View v) {
         startActivity(new Intent(this, PrincScreen.class));
 
@@ -292,6 +350,98 @@ private void dialogMap(int id){
 
         return awesomeValidation1.validate() ;
     }
+
+    private void EnvoyerSignal(){
+        final String Nature =EtNature.getText().toString().trim();
+        final String Lieu = EtDisplayLieu.getText().toString().trim();
+       // final String Location = EtLocation.getText().toString().trim();
+        final String Location = EtDisplayLieu.getText().toString().trim();
+        final String Cause = EtDisplayCause.getText().toString().trim();
+        final String photo = "image_uri.getPath().trim()".trim();
+        final String description = EtDisplayCause.getText().toString().trim();
+       // final String Email = email.getText().toString().trim();
+        //final String Password = password.getText().toString().trim();
+        progressDialoge.setMessage("registering User...");
+        progressDialoge.show();
+
+        StringRequest sRequest = new StringRequest(Request.Method.POST, Constants.URL_Signalisation, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progressDialoge.dismiss();
+                // Toast.makeText(getApplicationContext(),"login ",Toast.LENGTH_LONG).show();
+                JSONObject jsonObject,USER;
+
+                try {
+                    jsonObject = new JSONObject(response);
+                    USER = jsonObject.getJSONObject("errors");
+                   // if(jsonObject.getBoolean("success")) {
+                     //   SharedPreferences user = getApplicationContext().getSharedPreferences("user", getApplicationContext().MODE_PRIVATE);
+                      //  SharedPreferences.Editor edit= user.edit();
+                       // edit.apply();
+                        Toast.makeText(getApplicationContext(),USER.getString("fields"),Toast.LENGTH_LONG).show();
+                    //    Intent intent = new Intent (SignalLayout.this, PrincScreen.class );
+                     //   startActivity(intent);
+                      //  finish();
+
+                   // }else if(!(jsonObject.getBoolean("success"))){
+                        // USER = jsonObject.getJSONObject("errors");
+                        // Toast.makeText(getApplicationContext(),USER.getString("email")+"\n"+USER.getString("telephone"),Toast.LENGTH_LONG).show();
+                        // Toast.makeText(getApplicationContext(),"login not success",Toast.LENGTH_SHORT).show();
+                     //   if(!USER.getString("email").equals("")){
+                     //       Toast.makeText(getApplicationContext(),USER.getString("email"),Toast.LENGTH_LONG).show();
+                      //  }
+                       // if(!USER.getString("telephone").equals("")){
+                        //    Toast.makeText(getApplicationContext(),USER.getString("telephone"),Toast.LENGTH_LONG).show();
+                       // }
+
+                   // }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialoge.hide();
+                Toast.makeText(getApplicationContext(),"Signal created Succeful !!",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent (SignalLayout.this, PrincScreen.class );
+                startActivity(intent);
+                finish();
+               // Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                //  Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(),"login not succes",Toast.LENGTH_LONG).show();
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params =new HashMap<>();
+                params.put("lieu",Lieu );
+                params.put("nature", Nature);
+                params.put("localisation", Location);
+                params.put("desc", description);
+                params.put("photo", photo);
+                params.put("cause", Cause);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(sRequest);
+
+
+    }
+
+
+
+
+
+
 }
 
 
