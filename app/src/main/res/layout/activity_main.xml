@@ -28,7 +28,7 @@
             android:id="@+id/ETEMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+             android:drawableLeft="@drawable/ic_action_email"
             android:layout_marginTop="124dp"
             android:backgroundTint="#6696FF"
             android:hint="Email"
@@ -58,6 +58,7 @@
                 android:id="@+id/ETPAssword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_action_mdpasse"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Password"

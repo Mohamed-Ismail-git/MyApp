@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -52,6 +53,8 @@ public class SignalLayout extends AppCompatActivity  {
     private ProgressDialog progressDialoge;
     Button Nature;
     Uri image_uri;
+    public SharedPreferences signal ;
+    public SharedPreferences.Editor edit;
     int i;
     int j =0;
     int PLCE_PICKER_REQUEST=1;
@@ -130,6 +133,8 @@ mapLocation();
                     EnvoyerSignal();
                 else
                     Toast.makeText(getApplicationContext(),"can not use empty item ",Toast.LENGTH_LONG).show();
+
+
             }
         });
 
@@ -354,8 +359,8 @@ private void dialogMap(int id){
     private void EnvoyerSignal(){
         final String Nature =EtNature.getText().toString().trim();
         final String Lieu = EtDisplayLieu.getText().toString().trim();
-       // final String Location = EtLocation.getText().toString().trim();
-        final String Location = EtDisplayLieu.getText().toString().trim();
+        final String Location = EtLocation.getText().toString().trim();
+       // final String Location = EtDisplayLieu.getText().toString().trim();
         final String Cause = EtDisplayCause.getText().toString().trim();
         final String photo = "image_uri.getPath().trim()".trim();
         final String description = EtDisplayCause.getText().toString().trim();
@@ -373,30 +378,28 @@ private void dialogMap(int id){
 
                 try {
                     jsonObject = new JSONObject(response);
-                    USER = jsonObject.getJSONObject("errors");
+                  //  USER = jsonObject.getJSONObject("errors");
                    // if(jsonObject.getBoolean("success")) {
-                     //   SharedPreferences user = getApplicationContext().getSharedPreferences("user", getApplicationContext().MODE_PRIVATE);
-                      //  SharedPreferences.Editor edit= user.edit();
+                       signal = getApplicationContext().getSharedPreferences("user", getApplicationContext().MODE_PRIVATE);
+                       edit= signal.edit();
+                    // edit.putString("token",jsonObject.getString("token"));
+                    edit.putString("id",jsonObject.getString("id"));
+                    edit.putString("lieu",jsonObject.getString("lieu"));
+                    edit.putString("desc",jsonObject.getString("desc"));
+                    edit.putString("localisation",jsonObject.getString("localisation"));
+                    edit.putString("photo",jsonObject.getString("photo"));
+                    edit.putString("nature",jsonObject.getString("nature"));
+                    edit.putString("cause",jsonObject.getString("cause"));
+
+                    edit.commit();
+                    edit.apply();
                        // edit.apply();
-                        Toast.makeText(getApplicationContext(),USER.getString("fields"),Toast.LENGTH_LONG).show();
-                    //    Intent intent = new Intent (SignalLayout.this, PrincScreen.class );
-                     //   startActivity(intent);
-                      //  finish();
-
-                   // }else if(!(jsonObject.getBoolean("success"))){
-                        // USER = jsonObject.getJSONObject("errors");
-                        // Toast.makeText(getApplicationContext(),USER.getString("email")+"\n"+USER.getString("telephone"),Toast.LENGTH_LONG).show();
-                        // Toast.makeText(getApplicationContext(),"login not success",Toast.LENGTH_SHORT).show();
-                     //   if(!USER.getString("email").equals("")){
-                     //       Toast.makeText(getApplicationContext(),USER.getString("email"),Toast.LENGTH_LONG).show();
-                      //  }
-                       // if(!USER.getString("telephone").equals("")){
-                        //    Toast.makeText(getApplicationContext(),USER.getString("telephone"),Toast.LENGTH_LONG).show();
-                       // }
-
-                   // }
-
-
+                   // Toast.makeText(getApplicationContext(),jsonObject.getString("id"),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Signal created Succeful !!",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),signal.getString("lieu","")+"  "+signal.getString("localisation",""),Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent (SignalLayout.this, PrincScreen.class );
+                    startActivity(intent);
+                    finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -408,10 +411,7 @@ private void dialogMap(int id){
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialoge.hide();
-                Toast.makeText(getApplicationContext(),"Signal created Succeful !!",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent (SignalLayout.this, PrincScreen.class );
-                startActivity(intent);
-                finish();
+
                // Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
                 //  Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_LONG).show();
                 // Toast.makeText(getApplicationContext(),"login not succes",Toast.LENGTH_LONG).show();
