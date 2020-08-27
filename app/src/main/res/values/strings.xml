@@ -18,20 +18,20 @@
     <string name="invalid_CPassword">Passsword Does Not Math</string>
     <string name="google_maps_key">AIzaSyDPfQBUdw6s5NYVm6CdCRrrbxeVnf56cjQ</string>
     <string-array name="choice_items">
-        <item>One</item>
-        <item>Two</item>
+        <item>l'eaux</item>
+        <item>décheat</item>
         <item>Three</item>
         <item>Four</item>
         <item>Five</item>
         <item>Six</item>
     </string-array>
     <string-array name="choice_lieux">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item>Les 100</item>
+        <item>les 200</item>
+        <item>Faculte electrounique et informatique</item>
+        <item>Faculte chimique</item>
+        <item>Faculte biolougie</item>
+        <item>departement informatique</item>
     </string-array>
     <string-array name="role_item">
         <item>teacher</item>
