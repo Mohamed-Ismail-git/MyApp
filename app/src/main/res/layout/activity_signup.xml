@@ -33,7 +33,7 @@
             android:layout_marginBottom="-10dp"
 
             android:backgroundTint="#6696FF"
-            android:hint="@string/Name"
+            android:hint="Nom"
             android:inputType="textPersonName"
             android:textSize="15dp"
             app:layout_constraintBottom_toTopOf="@+id/ETtelephone"
@@ -112,7 +112,7 @@
             android:backgroundTint="#6696FF"
             android:gravity="center"
             android:hint="@string/sexe"
-            android:textSize="15dp"
+            android:textSize="13dp"
             android:text=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,33 +125,34 @@
             android:layout_height="51dp"
             android:layout_marginEnd="27dp"
             android:gravity="center"
-            android:text="Login"
+            android:text="Connexion"
             android:textColor="#6696ff"
-            android:textSize="30sp"
+            android:textSize="29sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/ETName"
             app:layout_constraintEnd_toStartOf="@+id/TVSignup"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.068"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.008" />
+            app:layout_constraintVertical_bias="0.023" />
+
 
         <TextView
             android:id="@+id/TVSignup"
             android:layout_width="161dp"
             android:layout_height="56dp"
-            android:layout_marginEnd="16dp"
             android:gravity="center"
-            android:text="Sign Up"
+            android:text="Inscription"
             android:textColor="#6696ff"
-            android:textSize="30sp"
+            android:textSize="29sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
 
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.004" />
-
 
         <RadioGroup
             android:id="@+id/Radio"
@@ -230,7 +231,7 @@
         android:layout_height="60dp"
         android:background="@mipmap/buttonimage"
         android:gravity="center"
-        android:text="Sign Up"
+        android:text="INSCRIRE"
         android:textColor="#DFDFE1"
         android:textSize="20sp"
         android:textStyle="bold"

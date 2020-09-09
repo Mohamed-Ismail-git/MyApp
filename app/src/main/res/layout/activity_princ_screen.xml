@@ -30,7 +30,7 @@
         android:layout_height="50dp"
         android:background="@mipmap/buttonimage"
         android:onClick="Signle"
-        android:text="Neveau Signal"
+        android:text="Nouveau Signal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.938"
@@ -53,4 +53,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.7" />
+
+    <TextView
+        android:id="@+id/usthb"
+        android:layout_width="281dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="MY USTHB,"
+        android:textColor="#0E2BCC"
+        android:textColorLink="#FFEB3B"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.389"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
 </androidx.constraintlayout.widget.ConstraintLayout>

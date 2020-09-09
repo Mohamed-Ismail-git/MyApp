@@ -73,16 +73,16 @@
             android:layout_height="51dp"
             android:layout_marginEnd="27dp"
             android:gravity="center"
-            android:text="Login"
+            android:text="Connexion"
             android:textColor="#6696ff"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textViewSignup"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.008" />
+            app:layout_constraintVertical_bias="0.004" />
 
         <TextView
             android:id="@+id/textViewSignup"
@@ -90,15 +90,15 @@
             android:layout_height="56dp"
             android:layout_marginEnd="16dp"
             android:gravity="center"
-            android:text="Sign Up"
+            android:text="Inscription"
             android:textColor="#6696ff"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.004" />
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -110,7 +110,7 @@
         android:layout_marginTop="46dp"
         android:background="@mipmap/buttonimage"
         android:gravity="center"
-        android:text="Login"
+        android:text="CONNEXION"
         android:textColor="#DFDFE1"
         android:textSize="20sp"
         android:textStyle="bold"

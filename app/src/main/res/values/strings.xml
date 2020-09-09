@@ -6,7 +6,7 @@
     <string name="Email">Email</string>
     <string name="Role">Role</string>
     <string name="telephone">Telephone</string>
-    <string name="sexe">choice Sexe</string>
+    <string name="sexe">Sexe</string>
     <string name="Password">Password</string>
     <string name="confirme">Confirmer Password</string>
     <string name="invalid_name">Please Entrer Valid Name</string>
@@ -17,13 +17,12 @@
     <string name="invalid_Password">" Pleas Entrer 5 Digit Or More "</string>
     <string name="invalid_CPassword">Passsword Does Not Math</string>
     <string name="google_maps_key">AIzaSyDPfQBUdw6s5NYVm6CdCRrrbxeVnf56cjQ</string>
-    <string-array name="choice_items">
-        <item>l'eaux</item>
+    <string-array name="choice_Cause">
+        <item>l\'eaux</item>
         <item>décheat</item>
-        <item>Three</item>
-        <item>Four</item>
-        <item>Five</item>
-        <item>Six</item>
+        <item>Electricité</item>
+        <item>clairage</item>
+        <item>manque des table</item>
     </string-array>
     <string-array name="choice_lieux">
         <item>Les 100</item>
@@ -32,6 +31,18 @@
         <item>Faculte chimique</item>
         <item>Faculte biolougie</item>
         <item>departement informatique</item>
+        <item>Faculte phisique</item>
+        <item>les Nouveau Bloc</item>
+    </string-array>
+    <string-array name="choice_Nature">
+        <item>Les 100</item>
+        <item>les 200</item>
+        <item>Faculte electrounique et informatique</item>
+        <item>Faculte chimique</item>
+        <item>Faculte biolougie</item>
+        <item>departement informatique</item>
+        <item>Faculte phisique</item>
+        <item>les Nouveau Bloc</item>
     </string-array>
     <string-array name="role_item">
         <item>teacher</item>
@@ -39,7 +50,7 @@
         <item>ATS</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
-    <string name="invalid_lieu">lieu is empty</string>
-    <string name="invalid_nature">nature is empty !!</string>
-    <string name="invalid_cause">cause is empty !!</string>
+    <string name="invalid_lieu">lieu est vide</string>
+    <string name="invalid_nature">nature est vide !!</string>
+    <string name="invalid_cause">cause est vide !!</string>
 </resources>

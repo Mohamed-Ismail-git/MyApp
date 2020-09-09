@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
                    LoginUser();
                   // Toast.makeText(getApplicationContext(), USER.getString("email","empty"),Toast.LENGTH_LONG).show();
 
-                   startActivity(intent);
-                   finish();
+                  // startActivity(intent);
+                  // finish();
                }
 
 
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     edit.putString("id",user.getString("id"));
                     edit.commit();
                     edit.apply();
-                    Toast.makeText(getApplicationContext(), "Welcome"+"   "+USER.getString("name","empty"),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Bonjour"+"   "+USER.getString("name","empty"),Toast.LENGTH_LONG).show();
                     callintent();
                     //startActivity(intent);
                    // finish();

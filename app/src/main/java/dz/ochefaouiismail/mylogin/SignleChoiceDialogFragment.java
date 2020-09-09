@@ -35,7 +35,7 @@ public class SignleChoiceDialogFragment extends DialogFragment {  int position =
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        final String[] list = getActivity().getResources().getStringArray(R.array.choice_items);
+        final String[] list = getActivity().getResources().getStringArray(R.array.choice_Cause);
 
         builder.setTitle("Select your Choice")
                 .setSingleChoiceItems(list, position, new DialogInterface.OnClickListener() {

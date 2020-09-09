@@ -47,7 +47,7 @@ import java.util.Map;
 
 public class SignalLayout extends AppCompatActivity  {
     int which = 0;
-    private EditText EtDisplayCause, EtDisplayLieu, EtNature ,EtLocation;
+    private EditText EtDisplayCause, EtDisplayLieu, EtNature ,EtLocation, description;
    // private FusedLocationProviderClient fusedLocationClient;
    // private GeofencingClient geofencingClient;
     private ProgressDialog progressDialoge;
@@ -73,6 +73,7 @@ public class SignalLayout extends AppCompatActivity  {
         EtDisplayLieu = findViewById(R.id.teDisplayLieu);
         EtNature = findViewById(R.id.teNature);
         EtLocation = findViewById(R.id.TELoc);
+        description = findViewById(R.id.Description);
         Nature = findViewById(R.id.NatureButton);
         Button btnSelectChoice = findViewById(R.id.btnSelectCause);
         Button btnSelectLieu = findViewById(R.id.btnSelectLieu);
@@ -90,8 +91,8 @@ public class SignalLayout extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 which = 0;
-                String[] lis = getResources().getStringArray(R.array.choice_items);
-                dialog(lis, EtDisplayCause);
+                String[] lis = getResources().getStringArray(R.array.choice_Cause);
+                dialog(lis, EtDisplayCause,"la cause:");
             }
         });
 
@@ -100,7 +101,7 @@ public class SignalLayout extends AppCompatActivity  {
             public void onClick(View view) {
                 which = 0;
                 String[] lis = getResources().getStringArray(R.array.choice_lieux);
-                dialog(lis, EtDisplayLieu);
+                dialog(lis, EtDisplayLieu,"lieu");
             }
         });
 
@@ -121,8 +122,8 @@ mapLocation();
             @Override
             public void onClick(View v) {
                 which = 0;
-                String[] liste = getResources().getStringArray(R.array.choice_lieux);
-                dialog(liste,EtNature);
+                String[] liste = getResources().getStringArray(R.array.choice_Nature);
+                dialog(liste,EtNature,"Nature");
             }
         });
 
@@ -132,7 +133,7 @@ mapLocation();
                 if(Validate())
                     EnvoyerSignal();
                 else
-                    Toast.makeText(getApplicationContext(),"can not use empty item ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"remplir tous les champs SVP !!",Toast.LENGTH_LONG).show();
 
 
             }
@@ -159,9 +160,9 @@ mapLocation();
 
 
 
-    private void dialog(final String[] list, final TextView text){
+    private void dialog(final String[] list, final TextView text,final String str){
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setTitle("Choose any item");
+    builder.setTitle(str);
 
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
             android.R.layout.simple_dropdown_item_1line, list);
@@ -363,7 +364,7 @@ private void dialogMap(int id){
        // final String Location = EtDisplayLieu.getText().toString().trim();
         final String Cause = EtDisplayCause.getText().toString().trim();
         final String photo = "image_uri.getPath().trim()".trim();
-        final String description = EtDisplayCause.getText().toString().trim();
+        final String descript = description.getText().toString().trim();
        // final String Email = email.getText().toString().trim();
         //final String Password = password.getText().toString().trim();
         progressDialoge.setMessage("registering User...");
@@ -424,7 +425,7 @@ private void dialogMap(int id){
                 params.put("lieu",Lieu );
                 params.put("nature", Nature);
                 params.put("localisation", Location);
-                params.put("desc", description);
+                params.put("desc", descript);
                 params.put("photo", photo);
                 params.put("cause", Cause);
                 return params;
